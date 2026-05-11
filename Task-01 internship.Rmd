@@ -1,0 +1,70 @@
+---
+title: "Task -01"
+output: word_document
+date: "2026-05-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Dataset 
+```{r}
+data=read.csv("C:\\Users\\DAMAN\\Downloads\\adutls.csv")
+View(data)
+```
+#gender distribution
+
+```{r}
+library(ggplot2)
+
+ggplot(data, aes(x = gender, fill = gender)) +
+  geom_bar(width = 0.6) +
+  labs(title = "Gender Distribution",
+       x = "Gender",
+       y = "Count") +
+  scale_fill_manual(values = c("#6A5ACD", "#FF69B4")) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    legend.position = "none"
+  )
+```
+#histogram for age 
+
+```{r}
+library(ggplot2)
+
+ggplot(data, aes(x = age)) +
+  geom_histogram(
+    aes(y = ..density..),
+    binwidth = 5,
+    fill = "#6A5ACD",
+    color = "white",
+    alpha = 0.8
+  ) +
+  geom_density(
+    color = "#FF6B6B",
+    linewidth = 1.5
+  ) +
+  labs(
+    title = "Age Distribution of Population",
+    subtitle = "Histogram with Density Curve",
+    x = "Age",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(
+      hjust = 0.5,
+      face = "bold",
+      size = 18
+    ),
+    plot.subtitle = element_text(
+      hjust = 0.5,
+      size = 12
+    ),
+    axis.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+```
